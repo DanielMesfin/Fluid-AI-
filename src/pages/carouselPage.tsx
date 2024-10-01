@@ -13,8 +13,8 @@ export default function CarouselPage() {
         <CarouselItem>
           <img src="/assets/11111.png" alt="imge" />
         </CarouselItem>
-        <CarouselItem>...</CarouselItem>
-        <CarouselItem>...</CarouselItem>
+        {/* <CarouselItem>...</CarouselItem>
+        <CarouselItem>...</CarouselItem> */}
       </CarouselContent>
       <CarouselPrevious />
       <CarouselNext />

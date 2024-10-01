@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
@@ -9,6 +9,9 @@ import { Clock, MapPin, Menu } from "lucide-react";
 import Footer from "./fotterPage";
 import FAQPage from "./fAQPage";
 import CarouselPage from "./carouselPage";
+import FeatureShowcase from "./featureShowcase";
+import NavBar from "./navBar";
+import JoinUs from "./joinUs";
 
 interface CardData {
   id: string;
@@ -60,7 +63,8 @@ const cardData: CardData[] = [
 ];
 
 const gradientStyle = {
-  background: "linear-gradient(to right, #ff7e5f, #feb47b)",
+  background:
+    "linear-gradient(to right, #FFFFFF1A, #FFFFFF1A), linear-gradient(to left, black, yellow),linear-gradient(to top, black, yellow),linear-gradient(to bottom, black, yellow)",
   height: "100vh",
   display: "flex",
   justifyContent: "center",
@@ -70,75 +74,20 @@ const gradientStyle = {
 
 const HomePage = () => {
   const [step, setStep] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
   const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const nextStep = () => setStep((prev) => Math.min(prev + 1, 2));
 
-  const NavLinks = () => (
-    <>
-      <a href="#" className="text-white hover:text-gray-200 block py-2">
-        What we solve
-      </a>
-      <a href="#" className="text-white hover:text-gray-200 block py-2">
-        Our features
-      </a>
-      <a href="#" className="text-white hover:text-gray-200 block py-2">
-        Our vision
-      </a>
-      <a href="#" className="text-white hover:text-gray-200 block py-2">
-        The roadmap
-      </a>
-    </>
-  );
-
   return (
-    <div
-      //   style={gradientStyle}
-      className="flex flex-col overflow-hidden bg-gradient-to-b from-black to-transparent"
-    >
+    <div className="flex flex-col overflow-hidden bg-gradient-to-b from-black to-transparent">
       {/* Navbar */}
-      <nav className="relative z-20 w-full p-4">
-        <div className="container mx-auto flex justify-between items-center">
-          {isMounted && isSmallScreen ? (
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="mr-2">
-                  <Menu className="h-6 w-6 text-white" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="left"
-                className="w-[300px] sm:w-[400px] bg-gray-900"
-              >
-                <nav className="flex flex-col space-y-4 mt-8">
-                  <NavLinks />
-                </nav>
-              </SheetContent>
-            </Sheet>
-          ) : null}
-          <div className="flex items-center space-x-4">
-            <img
-              src="/placeholder.svg?height=32&width=32"
-              alt="Fluid AI Logo"
-              className="w-8 h-8"
-            />
-            <span className="text-white font-bold text-xl">Fluid AI</span>
-          </div>
-          {isMounted && !isSmallScreen ? (
-            <div className="hidden md:flex space-x-4">
-              <NavLinks />
-            </div>
-          ) : null}
-        </div>
-      </nav>
+      <NavBar />
 
       {/* Main content */}
-      <main className="flex-grow flex flex-col items-center justify-start relative p-4">
+      <main
+        style={gradientStyle}
+        className="flex-grow flex flex-col items-center justify-start relative p-4"
+      >
         <AnimatePresence mode="wait">
           {step === 0 && (
             <motion.div
@@ -170,7 +119,9 @@ const HomePage = () => {
               >
                 Fluid AI
               </motion.h1>
-              <Button onClick={nextStep}>Get Started</Button>
+              <Button onClick={nextStep} className="color-white mt-4">
+                Get Started
+              </Button>
             </motion.div>
           )}
 
@@ -191,7 +142,7 @@ const HomePage = () => {
               >
                 Unlock Seamless Efficiency
               </motion.h2>
-              <Button onClick={nextStep} className="mt-4">
+              <Button onClick={nextStep} className="color-white mt-4">
                 Join Whitelist
               </Button>
             </motion.div>
@@ -266,77 +217,59 @@ const HomePage = () => {
         </AnimatePresence>
       </main>
       {/* Section 1 content */}
-      <section className="w-full bg-black text-white py-16 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-3xl md:text-5xl font-bold mb-8 text-center">
-            Fluid AI was born out of a desire to simplify and streamline modern
-            life
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center">
-              <div className="bg-gray-800 rounded-3xl p-4 mb-4 w-full max-w-[280px] aspect-[9/19]">
-                <img
-                  src="/assets/"
-                  alt="AI Canvas Interface"
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              <h2>Fluid AI: Simplify, Organize, and Achieve More</h2>
-              <p className="text-sm text-gray-400 text-center">
-                In a world where daily tasks, communication, and goals often
+      <section className="w-full text-white py-16 px-4 md:px-8">
+        <FeatureShowcase
+          title="Fluid AI was born out of a desire to simplify and streamline modern
+            life"
+          description="In a world where daily tasks, communication, and goals often
                 become overwhelming, Fluid AI offers an innovative solution.
                 Combining advanced AI technology with a user-friendly interface,
                 it brings together to-do lists, chats, saved items, and bucket
-                lists into one seamless platform.{" "}
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="bg-gray-800 rounded-3xl p-4 mb-4 w-full max-w-[280px] aspect-[9/19]">
-                <img
-                  src="/placeholder.svg?height=600&width=280"
-                  alt="AI Assistant Interface"
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              <h2 className="text-sm text-gray-400 text-center">
-                AI Canvas: Interact with your digital world
-              </h2>
-              <p className="text-sm text-gray-400 text-center">
-                In a world where daily tasks, communication, and goals often
-                become overwhelming, Fluid AI offers an innovative solution.
-                Combining advanced AI technology with a user-friendly interface,
-                it brings together to-do lists, chats, saved items, and bucket
-                lists into one seamless platform.
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="bg-gray-800 rounded-3xl p-4 mb-4 w-full max-w-[280px] aspect-[9/19]">
-                <img
-                  src="/placeholder.svg?height=600&width=280"
-                  alt="Messaging Interface"
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              <p className="text-sm text-gray-400 text-center">
-                Fluid AI: Simplify, Organize, and Enhance Work
-              </p>
-              <p className="text-sm text-gray-400 text-center">
-                In a world where daily tasks, communication, and goals often
-                become overwhelming, Fluid AI offers an innovative solution.
-                Combining advanced AI technology with a user-friendly interface,
-                it brings together to-do lists, chats, saved items, and bucket
-                lists into one seamless platform.
-              </p>
-            </div>
-          </div>
-        </div>
+                lists into one seamless platform."
+          imageSrc="/assets/E.png"
+          imageAlt="Description of the image"
+          textPosition="right"
+        />
+        <FeatureShowcase
+          title="Fluid AI was born out of a desire to simplify and streamline modern
+        life"
+          description="In a world where daily tasks, communication, and goals often
+            become overwhelming, Fluid AI offers an innovative solution.
+            Combining advanced AI technology with a user-friendly interface,
+            it brings together to-do lists, chats, saved items, and bucket
+            lists into one seamless platform."
+          imageSrc="/assets/A.png"
+          imageAlt="Description of the image"
+          textPosition="left"
+        />
+        <FeatureShowcase
+          title="Fluid AI was born out of a desire to simplify and streamline modern
+        life"
+          description="In a world where daily tasks, communication, and goals often
+            become overwhelming, Fluid AI offers an innovative solution.
+            Combining advanced AI technology with a user-friendly interface,
+            it brings together to-do lists, chats, saved items, and bucket
+            lists into one seamless platform."
+          imageSrc="/assets/B.png"
+          imageAlt="Description of the image"
+          textPosition="right"
+        />
+        <FeatureShowcase
+          title="Fluid AI was born out of a desire to simplify and streamline modern
+        life"
+          description="In a world where daily tasks, communication, and goals often
+            become overwhelming, Fluid AI offers an innovative solution.
+            Combining advanced AI technology with a user-friendly interface,
+            it brings together to-do lists, chats, saved items, and bucket
+            lists into one seamless platform."
+          imageSrc="/assets/C.png"
+          imageAlt="Description of the image"
+          textPosition="left"
+        />
       </section>
-      {/* Section 2 content */}
-
-      {/* Section 3 content */}
       <CarouselPage />
-      {/* Footer */}
       <FAQPage />
+      <JoinUs />
       <Footer />
     </div>
   );
