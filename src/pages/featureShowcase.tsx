@@ -1,6 +1,5 @@
 // import { Image } from '@shadcn/ui';
 import { cn } from "@/lib/utils"
-
 interface FeatureShowcaseProps {
   title: string
   description: string
