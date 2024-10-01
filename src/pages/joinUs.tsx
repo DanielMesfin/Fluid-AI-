@@ -39,7 +39,7 @@ export default function JoinUs() {
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "/assets/myphone.png",
+        backgroundImage: `url('/assets/myphone.png')`, // Corrected syntax for background image
       }}
     >
       <div className="w-full max-w-md p-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-sm">
