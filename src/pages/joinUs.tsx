@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Combobox } from "@headlessui/react";
 import { ChevronDownIcon } from "lucide-react";
 
-// Define a type for countries
 interface Country {
   name: string;
   code: string;
