@@ -10,7 +10,7 @@ import CarouselPage from "./carouselPage";
 import FeatureShowcase from "./featureShowcase";
 import NavBar from "./navBar";
 import JoinUs from "./joinUs";
-import { AppLogo } from "@/constants/svgs";
+import { AppLogo, Mouse } from "@/constants/svgs";
 
 interface CardData {
   id: string;
@@ -22,6 +22,9 @@ interface CardData {
   width: string;
   height: string;
 }
+
+
+
 
 const cardData: CardData[] = [
   {
@@ -61,15 +64,6 @@ const cardData: CardData[] = [
   },
 ];
 
-const gradientStyle = {
-  background:
-    "linear-gradient(to right, #FFFFFF1A, #FFFFFF1A), linear-gradient(to left, black, yellow),linear-gradient(to top, black, yellow),linear-gradient(to bottom, black, yellow)",
-  height: "100vh",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  color: "#fff",
-};
 
 const HomePage = () => {
   const [step, setStep] = useState(0);
@@ -79,13 +73,11 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col overflow-hidden bg-gradient-to-b from-black to-transparent">
-      {/* Navbar */}
       <NavBar />
 
       {/* Main content */}
       <main
-        style={gradientStyle}
-        className="flex-grow flex flex-col items-center justify-start relative p-4"
+        className="flex-grow  h-screen flex flex-col items-center justify-center relative p-4"
       >
         <AnimatePresence mode="wait">
           {step === 0 && (
@@ -95,10 +87,9 @@ const HomePage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-center z-10"
+              className="text-center z-10 flex flex-col items-center justify-between"
             >
-              <div className=" flex items-center justify-center space-x-5">
-
+              <div className=" flex flex-col md:flex-row items-center justify-center space-x-5">
                 <motion.img
                   src={AppLogo}
                   alt="Fluid AI Logo"
@@ -122,11 +113,20 @@ const HomePage = () => {
                 </motion.h1>
               </div>
 
-              <Button onClick={nextStep} className="color-white mt-4">
-                Get Started
-              </Button>
+
+
+
+
+
             </motion.div>
           )}
+          <div className="flex flex-col items-center gap-3 mt-32 animate-bounce">
+            <img src={Mouse} />
+            <p className="text-white">Scroll Down</p>
+          </div>
+
+
+
 
           {step === 1 && (
             <motion.div
@@ -218,6 +218,10 @@ const HomePage = () => {
           )}
         </AnimatePresence>
       </main>
+
+
+
+
       {/* Section 1 content */}
       <section className="w-full text-white py-16 px-4 md:px-8">
         <FeatureShowcase
@@ -269,6 +273,11 @@ const HomePage = () => {
           textPosition="left"
         />
       </section>
+
+
+
+
+
       <CarouselPage />
       <FAQPage />
       <JoinUs />
