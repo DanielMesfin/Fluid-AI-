@@ -10,6 +10,7 @@ import CarouselPage from "./carouselPage";
 import FeatureShowcase from "./featureShowcase";
 import NavBar from "./navBar";
 import JoinUs from "./joinUs";
+import { AppLogo } from "@/constants/svgs";
 
 interface CardData {
   id: string;
@@ -96,27 +97,31 @@ const HomePage = () => {
               transition={{ duration: 0.5 }}
               className="text-center z-10"
             >
-              <motion.img
-                src="/placeholder.svg?height=128&width=128"
-                alt="Fluid AI Logo"
-                className="w-32 h-32 mx-auto mb-4"
-                initial={{ y: -50 }}
-                animate={{ y: 0 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              />
-              <motion.h1
-                className="text-4xl font-bold text-white mb-8"
-                initial={{ y: 50 }}
-                animate={{ y: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 20,
-                  delay: 0.2,
-                }}
-              >
-                Fluid AI
-              </motion.h1>
+              <div className=" flex items-center justify-center space-x-5">
+
+                <motion.img
+                  src={AppLogo}
+                  alt="Fluid AI Logo"
+                  className="w-[162px]  h-[150px] mx-auto mb-4"
+                  initial={{ y: -50 }}
+                  animate={{ y: 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                />
+                <motion.h1
+                  className="text-7xl font-bold text-white mb-8"
+                  initial={{ y: 50 }}
+                  animate={{ y: 0 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                    delay: 0.2,
+                  }}
+                >
+                  Fluid AI
+                </motion.h1>
+              </div>
+
               <Button onClick={nextStep} className="color-white mt-4">
                 Get Started
               </Button>
@@ -169,9 +174,8 @@ const HomePage = () => {
                 Unlock Seamless Efficiency
               </motion.h2>
               <div
-                className={`grid ${
-                  isSmallScreen ? "grid-cols-1" : "grid-cols-2"
-                } gap-4 w-full max-w-4xl`}
+                className={`grid ${isSmallScreen ? "grid-cols-1" : "grid-cols-2"
+                  } gap-4 w-full max-w-4xl`}
               >
                 {cardData.map((card) => (
                   <motion.div
