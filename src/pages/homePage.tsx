@@ -10,6 +10,7 @@ import CarouselPage from "./carouselPage";
 import FeatureShowcase from "./featureShowcase";
 import NavBar from "./navBar";
 import JoinUs from "./joinUs";
+import { AppLogo, Mouse } from "@/constants/svgs";
 
 interface CardData {
   id: string;
@@ -21,6 +22,9 @@ interface CardData {
   width: string;
   height: string;
 }
+
+
+
 
 const cardData: CardData[] = [
   {
@@ -60,15 +64,6 @@ const cardData: CardData[] = [
   },
 ];
 
-const gradientStyle = {
-  background:
-    "linear-gradient(to right, #FFFFFF1A, #FFFFFF1A), linear-gradient(to left, black, yellow),linear-gradient(to top, black, yellow),linear-gradient(to bottom, black, yellow)",
-  height: "100vh",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  color: "#fff",
-};
 
 const HomePage = () => {
   const [step, setStep] = useState(0);
@@ -78,13 +73,11 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col overflow-hidden bg-gradient-to-b from-black to-transparent">
-      {/* Navbar */}
       <NavBar />
 
       {/* Main content */}
       <main
-        style={gradientStyle}
-        className="flex-grow flex flex-col items-center justify-start relative p-4"
+        className="flex-grow  h-screen flex flex-col items-center justify-center relative p-4"
       >
         <AnimatePresence mode="wait">
           {step === 0 && (
@@ -94,34 +87,46 @@ const HomePage = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-center z-10"
+              className="text-center z-10 flex flex-col items-center justify-between"
             >
-              <motion.img
-                src="/placeholder.svg?height=128&width=128"
-                alt="Fluid AI Logo"
-                className="w-32 h-32 mx-auto mb-4"
-                initial={{ y: -50 }}
-                animate={{ y: 0 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              />
-              <motion.h1
-                className="text-4xl font-bold text-white mb-8"
-                initial={{ y: 50 }}
-                animate={{ y: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 20,
-                  delay: 0.2,
-                }}
-              >
-                Fluid AI
-              </motion.h1>
-              <Button onClick={nextStep} className="color-white mt-4">
-                Get Started
-              </Button>
+              <div className=" flex flex-col md:flex-row items-center justify-center space-x-5">
+                <motion.img
+                  src={AppLogo}
+                  alt="Fluid AI Logo"
+                  className="w-[162px]  h-[150px] mx-auto mb-4"
+                  initial={{ y: -50 }}
+                  animate={{ y: 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                />
+                <motion.h1
+                  className="text-7xl font-bold text-white mb-8"
+                  initial={{ y: 50 }}
+                  animate={{ y: 0 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                    delay: 0.2,
+                  }}
+                >
+                  Fluid AI
+                </motion.h1>
+              </div>
+
+
+
+
+
+
             </motion.div>
           )}
+          <div className="flex flex-col items-center gap-3 mt-32 animate-bounce">
+            <img src={Mouse} />
+            <p className="text-white">Scroll Down</p>
+          </div>
+
+
+
 
           {step === 1 && (
             <motion.div
@@ -169,9 +174,8 @@ const HomePage = () => {
                 Unlock Seamless Efficiency
               </motion.h2>
               <div
-                className={`grid ${
-                  isSmallScreen ? "grid-cols-1" : "grid-cols-2"
-                } gap-4 w-full max-w-4xl`}
+                className={`grid ${isSmallScreen ? "grid-cols-1" : "grid-cols-2"
+                  } gap-4 w-full max-w-4xl`}
               >
                 {cardData.map((card) => (
                   <motion.div
@@ -214,6 +218,10 @@ const HomePage = () => {
           )}
         </AnimatePresence>
       </main>
+
+
+
+
       {/* Section 1 content */}
       <section className="w-full text-white py-16 px-4 md:px-8">
         <FeatureShowcase
@@ -265,6 +273,11 @@ const HomePage = () => {
           textPosition="left"
         />
       </section>
+
+
+
+
+
       <CarouselPage />
       <FAQPage />
       <JoinUs />

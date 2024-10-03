@@ -71,7 +71,7 @@ export default function FAQPage() {
               {faqData.map((item, index) => (
                 <div key={index} className="border-b border-gray-700 pb-4">
                   <button
-                    className="flex justify-between items-center w-full text-left"
+                    className="flex justify-between items-center w-full text-left transition-all delay-300 ease-in-out"
                     onClick={() => toggleItem(index)}
                   >
                     <span className="text-lg">{item.question}</span>
@@ -82,7 +82,7 @@ export default function FAQPage() {
                     )}
                   </button>
                   {openItems.includes(index) && (
-                    <p className="mt-2 text-gray-400">{item.answer}</p>
+                    <p className="mt-2  transition-all delay-300 ease-in-out text-gray-400">{item.answer}</p>
                   )}
                 </div>
               ))}

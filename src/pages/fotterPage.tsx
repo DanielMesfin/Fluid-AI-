@@ -12,7 +12,7 @@ export default function Footer() {
               <Dot size={8} />
               <Dot size={8} />
             </div>
-            <span className="text-lg font-semibold">Fluid AI</span>
+            <span className="text-3xl font-bold">Fluid AI</span>
           </div>
           <p className="text-sm text-gray-400">2024 Fluid AI</p>
         </div>
@@ -20,27 +20,27 @@ export default function Footer() {
           <div>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="hover:text-gray-300">
+                <a href="#" className="text-white opacity-50">
                   Our Features
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-300">
+                <a href="#" className="text-white opacity-50">
                   Areas
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-300">
+                <a href="#" className="text-white opacity-50">
                   FAQs
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-300">
+                <a href="#" className="text-white opacity-50">
                   The Waitlist
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-300">
+                <a href="#" className="text-white opacity-50">
                   Contact us
                 </a>
               </li>
@@ -49,12 +49,12 @@ export default function Footer() {
           <div>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="hover:text-gray-300">
+                <a href="#" className="text-white opacity-50">
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-300">
+                <a href="#" className="text-white opacity-50">
                   Privacy Policy
                 </a>
               </li>
